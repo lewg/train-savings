@@ -1,3 +1,4 @@
 server:
   build: .
-  # volumes:
+  volumes:
+    - dist:/usr/src/app/dist
