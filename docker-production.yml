@@ -1,0 +1,4 @@
+web:
+  build: dist/.
+  ports:
+    - "11050:80"

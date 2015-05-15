@@ -1,0 +1,296 @@
+{{#bs-form class="form-horizontal"}}
+  <fieldset>
+    <legend>Work Info:</legend>
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3" >Weeks of Work:</label>
+      <div class="col-sm-5 col-md-4">
+        {{ui-number-input size=2 value=model.work.weeks max=52 min=1 aria-describedby="weeksHelpBlock"}}
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="weeksHelpBlock" class="help-block">Weeks of work you <s>suffer through</s> enjoy a year.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Driven Miles from Home:</label>
+      <div class="col-sm-5 col-md-4">
+        {{ui-number-input size=3 value=model.work.miles_away max=500 min=0 aria-describedby="workMilesHelpBlock"}}
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="workMilesHelpBlock" class="help-block">One-way driving distance to the office.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Parking Pass Frequency:</label>
+      <div class="col-sm-5 col-md-4">
+        {{#bs-button-group justified=true value=model.work.parking_frequency type="radio" aria-describedby="workParkHelpBlock"}}
+          {{#each choice in frequency}}
+            <div class="btn-group" role="group">
+              {{#bs-button value=choice}}{{choice}}{{/bs-button}}
+            </div>
+          {{/each}}
+        {{/bs-button-group}}
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="workParkHelpBlock" class="help-block">How frequently you purchase parking.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">{{model.work.parking_frequency}} Parking Cost:</label>
+      <div class="col-sm-5 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          {{bs-input value=model.work.parking_cost type="number" min="0"  aria-describedby="parkCostHelpBlock"}}
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="parkCostHelpBlock" class="help-block">How much it sets you back.</span>
+      </div>
+    {{/bs-form-group}}
+
+  </fieldset>
+
+  <fieldset>
+    <legend>Train Info:</legend>
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Train Pass Frequency:</label>
+      <div class="col-sm-5 col-md-4">
+        {{#bs-button-group justified=true value=model.train.pass_frequency type="radio" aria-describedby="trainFreqHelpBlock"}}
+          {{#each choice in frequency}}
+            <div class="btn-group" role="group">
+              {{#bs-button value=choice}}{{choice}}{{/bs-button}}
+            </div>
+          {{/each}}
+        {{/bs-button-group}}
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="trainFreqHelpBlock" class="help-block">The kind of train pass you buy.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">{{model.train.pass_frequency}} Train Pass Cost:</label>
+      <div class="col-sm-5 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          {{bs-input value=model.train.pass_cost type="number" min="0" aria-describedby="passCostHelpBlock"}}
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="passCostHelpBlock" class="help-block">The price of the pass.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Train Parking Pass Frequency:</label>
+      <div class="col-sm-5 col-md-4">
+        {{#bs-button-group justified=true value=model.train.parking_frequency type="radio" aria-describedby="parkFreqHelpBlock"}}
+          {{#each choice in frequency}}
+            <div class="btn-group" role="group">
+              {{#bs-button value=choice}}{{choice}}{{/bs-button}}
+            </div>
+          {{/each}}
+        {{/bs-button-group}}
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="parkFreqHelpBlock" class="help-block">How frequently you pay for parking.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">{{model.train.parking_frequency}} Train Parking Cost:</label>
+      <div class="col-sm-5 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          {{bs-input value=model.train.parking_cost type="number" min="0" aria-describedby="trainParkCostHelpBlock"}}
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="trainParkCostHelpBlock" class="help-block">What the parking costs.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Driven Miles to Station</label>
+      <div class="col-sm-5 col-md-4">
+        {{bs-input value=model.train.miles_to_station type="number" min="0" aria-describedby="stationMilesHelpBlock"}}
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="stationMilesHelpBlock" class="help-block">One-way driving distance to the station.</span>
+      </div>
+    {{/bs-form-group}}
+
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Vehicle Info:</legend>
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Fuel Economy (miles/gallon)</label>
+      <div class="col-sm-5 col-md-4">
+        {{bs-input value=model.vehicle.miles_per_gallon type="number" min="0" aria-describedby="mpgHelpBlock"}}
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="mpgHelpBlock" class="help-block">The average MPG you get from your ride.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Cost of Gas ($/gallon)</label>
+      <div class="col-sm-5 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          {{bs-input value=model.vehicle.gas_cost_per_gallon type="number" min="0" aria-describedby="gasCostHelpBlock"}}
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="gasCostHelpBlock" class="help-block">The <a href="http://www.gasbuddy.com/" target="_blank">average cost {{fa-icon "external-link"}}</a> of gas.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Oil Change Frequency (miles)</label>
+      <div class="col-sm-5 col-md-4">
+        {{bs-input value=model.vehicle.oil_change_miles type="number" min="0" aria-describedby="oilFreqHelpBlock"}}
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="oilFreqHelpBlock" class="help-block">How many miles you <em>actually</em> go between oil changes.</span>
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Cost of Oil Change</label>
+      <div class="col-sm-5 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          {{bs-input value=model.vehicle.oil_change_cost type="number" min="0" aria-describedby="oilCostHelpBlock"}}
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-5">
+        <span id="oilCostHelpBlock" class="help-block">The cost of an oil change.</span>
+      </div>
+    {{/bs-form-group}}
+
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Total Costs:</legend>
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Total Train Cost:</label>
+      <div class="col-sm-5 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          {{bs-input value=trainCostFmt readonly=true}}
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-5">
+        This is the total annual cost of riding the train.
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Total Driving Cost:</label>
+      <div class="col-sm-5 col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          {{bs-input value=drivingCostFmt readonly=true}}
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-5">
+        This is the total annual cost of driving to work.
+      </div>
+    {{/bs-form-group}}
+
+    {{#bs-form-group}}
+      <label class="control-label col-sm-3">Train Savings:</label>
+        <div class="col-sm-5 col-md-4">
+          <div class="input-group {{if hasTrainSavings 'has-success' 'has-error'}}">
+            <span class="input-group-addon">$</span>
+            {{bs-input value=trainSavingsFmt readonly=true}}
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-5">
+          {{#if hasTrainSavings}}
+            <span class="text-success"><strong>Congratulations!</strong> You're saving money AND your sanity by riding the train.
+            <em>(Note: train sanity depends heavily on fellow riders.)</em></span>
+          {{else}}
+            <span class="text-danger"><strong>Sorry!</strong> It looks like riding the train costs
+              you money over driving in. On the bright side, you can't (easily) sleep through your
+              stop.</span>
+          {{/if}}
+        </div>
+    {{/bs-form-group}}
+
+  </fieldset>
+
+  <fieldset class="explaination">
+    <legend>Explaination:</legend>
+    <p>Driving to work will put {{drivingDistanceFmt}} miles on your car, and at
+      {{model.vehicle.miles_per_gallon}} miles per gallon
+      you'll burn {{drivingGasUsedFmt}} gallons of fuel.
+      With prices at ${{gasPriceFmt}}/gallon
+      gas will cost you ${{drivingGasCostFmt}}.
+      Because you claim to change your
+      oil every {{model.vehicle.oil_change_miles}} miles, it will also result in
+      {{drivingOilChanges}} oil changes at ${{model.vehicle.oil_change_cost}} a pop
+      for a total of ${{drivingOilCostFmt}}. Finally, you'll need to pony up {{drivingParkCost}}
+      for parking. Add up gas (${{drivingGasCostFmt}}), oil (${{drivingOilCostFmt}}) and
+      parking (${{drivingParkCostFmt}}) and <strong>driving to work set you back
+      ${{drivingCostFmt}} this year.</strong></p>
+
+    <p>Your {{model.train.pass_frequency}} train pass ultimately costs you
+      ${{trainPassCost}} annually.
+      Getting to and from the station will put {{trainVehicleDistanceFmt}} miles on your vehicle,
+      setting you back ${{trainVehicleGasCostFmt}} at {{model.vehicle.miles_per_gallon}} MPG.
+      Additionally, it will lead to {{trainVehicleOilChanges}} oil changes
+      totaling ${{trainVehicleOilCost}}. {{model.train.parking_frequency}} parking at the
+      station ends up running you ${{trainParkCost}}. All told the pass (${{trainPassCostFmt}}),
+      parking (${{trainParkCost}}), gas (${{trainVehicleGasCostFmt}}),
+      and oil (${{trainVehicleOilCost}}) expenses combine to make
+      <strong>${{trainCostFmt}} the annual cost of riding the train</strong>.
+    </p>
+    <p class="summary">
+      {{#if hasTrainSavings }}
+        Putting it all together your train cost of ${{trainCostFmt}} is less then
+        your driving cost of ${{drivingCostFmt}}
+        <strong>saving you ${{trainSavingsFmt}} a year!</strong>
+      {{else}}
+        Turns out taking the train for you isn't such a cost savings. <strong>You'll end up
+        losing ${{negativeTrainSavingsFmt}} by riding over driving.</strong> But, if you're like me,
+        riding also saves me a little bit of sanity every day that'd I'd be losing to road rage,
+        but there's no doubt your decision is a little more complicated!
+      {{/if}}
+    </p>
+    <div class="row sharing">
+      <div class="col-sm-3 twitter-share">
+        <a href="{{ tweetURL }}">
+          <div class="social">{{fa-icon "twitter"}}</div>
+          Tweet your savings!
+        </a>
+      </div>
+      <div class="col-sm-3 facebook-share" >
+        <a href="" {{action 'facebookShare'}}>
+          <div class="social">{{fa-icon "facebook"}}</div>
+          Rub it in on Facebook.
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <div class="social">{{fa-icon "linkedin"}}</div>
+        Inform your profession network about how savvy you are.
+      </div>
+      <div class="col-sm-3">
+        <div class="social">{{fa-icon "instagram"}}</div>
+        Take a selfie? I have no idea.
+      </div>
+    </div>
+  </fieldset>
+
+
+
+{{/bs-form}}
