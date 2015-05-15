@@ -3,6 +3,20 @@
 A one page ember.js app to figure out what (and if) you save money by taking the
 train over driving.
 
+## Docker Instructions
+
+### Building
+
+    % fig build
+    % fig run server ember build --environment production
+
+### Running (after a build)
+
+    % fig -f docker-production.yml build
+    % fig -f docker-production.yml up
+
+If you don't have docker, you can follow along starting with Prerequisites.
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
@@ -12,6 +26,10 @@ You will need the following things properly installed on your computer.
 * [Bower](http://bower.io/)
 * [Ember CLI](http://www.ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
+
+OR.. Docker
+
+
 
 ## Installation
 
