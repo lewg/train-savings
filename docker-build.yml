@@ -1,0 +1,5 @@
+build:
+  build: .
+  volumes:
+    - dist:/usr/src/trainsavings/dist
+  command: ember build --environment production

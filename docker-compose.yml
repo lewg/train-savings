@@ -1,4 +1,4 @@
 server:
   build: .
   volumes:
-    - dist:/usr/src/app/dist
+    - .:/usr/src/trainsavings

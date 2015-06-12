@@ -23,7 +23,9 @@ module.exports = function(environment) {
       'script-src': "'self' 'unsafe-inline' www.google-analytics.com connect.facebook.net platform.twitter.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
       'frame-src': "'self' static.ak.facebook.com s-static.ak.facebook.com"
-    }
+    },
+
+
   };
 
   if (environment === 'development') {
@@ -47,7 +49,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.googleAnalytics = {
+      webPropertyId: 'UA-547083-2'
+    };
   }
 
   return ENV;
